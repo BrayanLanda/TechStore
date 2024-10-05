@@ -1,5 +1,10 @@
+using TechStore.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Llama al método de extensión para configurar la base de datos
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
 // Add services to the container.
 
 builder.Services.AddControllers();
