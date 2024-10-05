@@ -37,6 +37,7 @@ dotnet restore
 - Swashbuckle.AspNetCore.Annotations
 - Swashbuckle.AspNetCore
 - Microsoft.VisualStudio.Web.CodeGeneration.Design
+- AutoMapper
 
 ### 3. Configurar la Base de Datos
 Este proyecto utiliza Entity Framework Core para la interacción con la base de datos. Ejecuta las migraciones para configurar la base de datos:
