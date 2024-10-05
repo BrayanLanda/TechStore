@@ -5,7 +5,7 @@ Este proyecto es una API construida con **ASP.NET Core**, utilizando una arquite
 ## Requisitos
 
 - [.NET 6.0 SDK o superior](https://dotnet.microsoft.com/download/dotnet/6.0)
-- [/ MySQL ]
+- [MySQL ]
 - [Visual Studio 2022 o Visual Studio Code](https://visualstudio.microsoft.com/)
 - [Postman (para probar la API)](https://www.postman.com/)
 
