@@ -23,7 +23,7 @@ namespace TechStore.Services
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if(user == null) 
-                throw new UserNotFoundException(email);
+                throw new UserNotFoundException("user", email);
             return user;
         }
 

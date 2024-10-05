@@ -13,12 +13,9 @@ Env.Load();
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddSwaggerServices(); // Agrega Swagger
 
-
-builder.Services.AddControllers(options => {
-    options.Filters.Add<GlobalExceptionFilter>();
-});
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Configura Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -37,7 +34,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Asegúrate de que UseAuthentication está antes de UseAuthorization
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSwaggerServices(); // Configura Swagger
 
 app.MapControllers();
 

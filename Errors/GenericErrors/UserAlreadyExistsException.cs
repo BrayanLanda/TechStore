@@ -7,8 +7,8 @@ namespace TechStore.Errors
 {
     public class UserAlreadyExistsException : BaseException
     {
-        public UserAlreadyExistsException(string email)
-        : base($"User with email {email} already exists.", StatusCodes.Status400BadRequest)
+        public UserAlreadyExistsException(string email, string table)
+        : base($"{table} with email {email} already exists.", StatusCodes.Status400BadRequest)
         {
         }
     }
