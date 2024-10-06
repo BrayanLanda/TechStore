@@ -13,11 +13,7 @@ namespace TechStore.Controllers.CustomerController
         public GetCustomerController(ICustomerRepository customerRepository, IMapper mapper) 
             : base(customerRepository, mapper) { }
 
-        /// <summary>
-        /// Retrieves a specific customer by id.
-        /// </summary>
-        /// <param name="id">The id of the customer to retrieve.</param>
-        /// <returns>The requested customer.</returns>
+
         [HttpGet("{id}", Name = "GetCustomer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -30,10 +26,6 @@ namespace TechStore.Controllers.CustomerController
             return Ok(customer);
         }
 
-        /// <summary>
-        /// Retrieves all customers.
-        /// </summary>
-        /// <returns>A list of all customers.</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [Tags("customers")]

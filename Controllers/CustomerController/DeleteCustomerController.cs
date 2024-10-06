@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using TechStore.Interfaces;
 
 namespace TechStore.Controllers.CustomerController
@@ -16,7 +17,10 @@ namespace TechStore.Controllers.CustomerController
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "ADMIN")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [SwaggerOperation(
+        Summary = "Deletes an existing customer",
+        Description = "Removes a customer from the database.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -24,7 +28,7 @@ namespace TechStore.Controllers.CustomerController
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             await _customerRepository.DeleteAsync(id);
-            return NoContent();
+            return Ok("User deleted successfully");
         }
     }
 }

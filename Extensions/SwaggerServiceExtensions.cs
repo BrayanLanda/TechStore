@@ -40,11 +40,10 @@ namespace TechStore.Extensions
                         new string[] {}
                     }
                 });
-                // Agrega más configuraciones si es necesario, como la autenticación, etc.
+
+                // Habilitar las anotaciones de Swagger
+                c.EnableAnnotations();
             });
-
-
-
             return services;
         }
     }
