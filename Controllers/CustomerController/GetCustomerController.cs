@@ -19,9 +19,9 @@ namespace TechStore.Controllers.CustomerController
         /// <param name="id">The id of the customer to retrieve.</param>
         /// <returns>The requested customer.</returns>
         [HttpGet("{id}", Name = "GetCustomer")]
-        [Tags("customers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Tags("customers")]
         public async Task<IActionResult> GetCustomer(int id)
         {
             var customer = await _customerRepository.GetByIdAsync(id);
@@ -36,6 +36,7 @@ namespace TechStore.Controllers.CustomerController
         /// <returns>A list of all customers.</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Tags("customers")]
         public async Task<IActionResult> GetAllCustomers()
         {
             var customers = await _customerRepository.GetAllAsync();

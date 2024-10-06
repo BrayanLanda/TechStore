@@ -8,7 +8,8 @@ using TechStore.Interfaces;
 namespace TechStore.Controllers.UserController
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/")]
+    [Produces("application/json")]
     public abstract class AuthControllerBase : ControllerBase
     {
         protected readonly IAuthRepository _authRepository;

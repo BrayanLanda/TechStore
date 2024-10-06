@@ -45,5 +45,19 @@ namespace TechStore.Services
             await _context.Set<Customer>().AddAsync(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var entity = await GetByIdAsync(id);
+
+            // Si la entidad no se encuentra, lanzar la excepción correspondiente
+            if (entity == null)
+            {
+                throw new IdNotFoundException("customer", id);
+            }
+
+            _context.Set<Customer>().Remove(entity);
+            await _context.SaveChangesAsync();
+        }
     }
 }

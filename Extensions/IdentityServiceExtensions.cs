@@ -12,10 +12,9 @@ namespace TechStore.Interfaces
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            // Obtener la clave del token desde las variables de entorno o configuración
-            var tokenKey = Environment.GetEnvironmentVariable("TOKEN_KEY") 
-                           ?? config["Jwt:Key"] 
-                           ?? throw new Exception("TokenKey not found");
+            // Obtener la clave del token desde las variables de entorno
+        var tokenKey = Environment.GetEnvironmentVariable("TOKEN_KEY") 
+                        ?? throw new Exception("TOKEN_KEY not found");
 
             // Añadir autenticación JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -26,7 +25,8 @@ namespace TechStore.Interfaces
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
                         ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        ValidateLifetime = true
                     };
                 });
 

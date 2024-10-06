@@ -11,7 +11,6 @@ namespace TechStore.Controllers.CustomerController
     [ApiController]
     [Route("api/v1/customers")]
     [Produces("application/json")]
-    [Tags("Customers")]
     public abstract class CustomerControllerBase : ControllerBase
     {
         protected readonly ICustomerRepository _customerRepository;

@@ -15,10 +15,12 @@ namespace TechStore.Services
     {
         public string CreateToken(User user)
         {
-            var tokenKey = config["TOKEN_KEY"] 
-                        ?? config["Jwt:Key"] 
+            var tokenKey = Environment.GetEnvironmentVariable("TOKEN_KEY") 
                         ?? throw new Exception("Cannot access tokenKey from appsettings");
+
+
             if(tokenKey.Length < 64) throw new Exception("Your tojen needs to be langer");
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
 
             var claims = new List<Claim>

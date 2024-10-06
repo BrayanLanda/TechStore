@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TechStore.Errors
 {
-    public class UnauthorizedAccessException : BaseException
+    public class NeedUnauthorizedAccessException : BaseException
     {
-        public UnauthorizedAccessException(string action)
+        public NeedUnauthorizedAccessException(string action)
             : base($"You do not have permission to perform this action: {action}.", StatusCodes.Status403Forbidden)
         {
         }

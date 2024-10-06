@@ -9,39 +9,41 @@ using TechStore.Interfaces;
 namespace TechStore.Controllers.UserController
 {
     public class AuthController : AuthControllerBase
-{
-    public AuthController(IAuthRepository authRepository) : base(authRepository)
     {
-    }
-
-    [HttpPost("register")]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Register(UserRegisterDto userRegisterDto)
-    {
-        if (!ModelState.IsValid)
+        public AuthController(IAuthRepository authRepository) : base(authRepository)
         {
-            return BadRequest(ModelState);
         }
 
-        var result = await _authRepository.RegisterAsync(userRegisterDto);
-
-        return CreatedAtAction(nameof(Register), new { username = result.Username }, result);
-    }
-
-    [HttpPost("login")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Login(UserLoginDto userLoginDto)
-    {
-        if (!ModelState.IsValid)
+        [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Tags("authentications")]
+        public async Task<IActionResult> Register(UserRegisterDto userRegisterDto)
         {
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _authRepository.RegisterAsync(userRegisterDto);
+
+            return CreatedAtAction(nameof(Register), new { username = result.Username }, result);
         }
 
-        var result = await _authRepository.LoginAsync(userLoginDto);
+        [HttpPost("login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Tags("authentications")]
+        public async Task<IActionResult> Login(UserLoginDto userLoginDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        return Ok(result);
+            var result = await _authRepository.LoginAsync(userLoginDto);
+
+            return Ok(result);
+        }
     }
-}
 }

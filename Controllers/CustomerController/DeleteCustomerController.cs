@@ -11,24 +11,18 @@ namespace TechStore.Controllers.CustomerController
 {
     public class DeleteCustomerController : CustomerControllerBase
     {
-        public DeleteCustomerController(ICustomerRepository customerRepository, IMapper mapper) 
+        public DeleteCustomerController(ICustomerRepository customerRepository, IMapper mapper)
             : base(customerRepository, mapper) { }
 
-        /// <summary>
-        /// Deletes a specific customer.
-        /// </summary>
-        /// <param name="id">The id of the customer to delete.</param>
-        /// <returns>No content if successful.</returns>
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "ADMIN")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [Tags("customers")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
-            var customer = await _customerRepository.GetByIdAsync(id);
-            if (customer == null)
-                return NotFound();
-
             await _customerRepository.DeleteAsync(id);
             return NoContent();
         }

@@ -18,6 +18,7 @@ namespace TechStore.Controllers.CustomerController
         Description = "Adds a new customer to the database.")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Tags("customers")]
         public async Task<IActionResult> CreateCustomer([FromBody] CustomerDto customerDto)
         {
             var customer = _mapper.Map<Customer>(customerDto);

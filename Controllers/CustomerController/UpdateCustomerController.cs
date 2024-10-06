@@ -25,6 +25,7 @@ namespace TechStore.Controllers.CustomerController
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Tags("customers")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] CustomerDto customerDto)
         {
             var customer = await _customerRepository.GetByIdAsync(id);
