@@ -14,7 +14,7 @@ namespace TechStore.Interfaces
         {
             // Obtener la clave del token desde las variables de entorno o configuración
             var tokenKey = Environment.GetEnvironmentVariable("TOKEN_KEY") 
-                           ?? config["TokenKey"] 
+                           ?? config["Jwt:Key"] 
                            ?? throw new Exception("TokenKey not found");
 
             // Añadir autenticación JWT

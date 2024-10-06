@@ -8,7 +8,7 @@ namespace TechStore.Errors.GenericErrors
     public class UserNotFoundException : BaseException
     {
         public UserNotFoundException(string model, string email)
-            : base($"{model} with email {email} was not found.", StatusCodes.Status404NotFound)
+            : base($"{model} with {email} was not found.", StatusCodes.Status404NotFound)
         {
         }
     }

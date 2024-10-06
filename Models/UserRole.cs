@@ -2,7 +2,7 @@ namespace TechStore.Models
 {
     public enum UserRole
     {
-        ADMIN,
-        EMPLOYEE
+        ADMIN = 1,
+        EMPLOYEE = 2
     }
 }

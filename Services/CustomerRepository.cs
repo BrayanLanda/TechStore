@@ -39,7 +39,7 @@ namespace TechStore.Services
             var existingCustomer = await GetCustomerByEmailAsync(entity.Email);
             if (existingCustomer != null)
             {
-                throw new UserAlreadyExistsException(entity.Email, "Customer");
+                throw new UserAlreadyExistsException("Customer", entity.Email);
             }
 
             await _context.Set<Customer>().AddAsync(entity);

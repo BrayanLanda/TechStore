@@ -19,6 +19,7 @@ namespace TechStore.Controllers.CustomerController
         /// <param name="id">The id of the customer to retrieve.</param>
         /// <returns>The requested customer.</returns>
         [HttpGet("{id}", Name = "GetCustomer")]
+        [Tags("customers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomer(int id)
