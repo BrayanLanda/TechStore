@@ -24,6 +24,7 @@ namespace TechStore.Extensions
             services.AddScoped<ITokenRepository, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

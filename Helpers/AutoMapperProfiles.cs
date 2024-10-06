@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using TechStore.DTOs.CategoryDtos;
 using TechStore.DTOs.CustomerDtos;
 using TechStore.DTOs.OrderDtos;
 using TechStore.DTOs.UserDtos;
@@ -22,6 +23,8 @@ namespace TechStore.Helpers
             CreateMap<UserLoginDto, User>();
             CreateMap<UserRegisterDto, User>();
             CreateMap<UserAuthResponseDto, User>();
+
+            CreateMap<CategoryDto, Category>();
 
             
             CreateMap<UserLoginDto, User>();

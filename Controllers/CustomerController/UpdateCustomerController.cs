@@ -16,13 +16,6 @@ namespace TechStore.Controllers.CustomerController
     {
         public UpdateCustomerController(ICustomerRepository customerRepository, IMapper mapper) 
             : base(customerRepository, mapper) { }
-
-        /// <summary>
-        /// Updates an existing customer.
-        /// </summary>
-        /// <param name="id">The id of the customer to update.</param>
-        /// <param name="customerDto">The updated customer details.</param>
-        /// <returns>No content if successful.</returns>
         [HttpPut("{id}")]
         [Authorize(Roles = "ADMIN")]
         [SwaggerOperation(
