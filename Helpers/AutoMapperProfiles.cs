@@ -6,6 +6,7 @@ using AutoMapper;
 using TechStore.DTOs.CategoryDtos;
 using TechStore.DTOs.CustomerDtos;
 using TechStore.DTOs.OrderDtos;
+using TechStore.DTOs.ProductDtos;
 using TechStore.DTOs.UserDtos;
 using TechStore.Models;
 
@@ -27,7 +28,7 @@ namespace TechStore.Helpers
             CreateMap<CategoryDto, Category>();
 
             
-            CreateMap<UserLoginDto, User>();
+            CreateMap<ProductDto, Product>();
         }
     }
 }

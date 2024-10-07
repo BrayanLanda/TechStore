@@ -15,12 +15,12 @@ namespace TechStore.DTOs.ProductDtos
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Price is required")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than zero")]
+        [Range(0.01, (double)decimal.MaxValue, ErrorMessage = "Price must be greater than zero")]
         public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Inventory quantity is required")]
         [Range(0, int.MaxValue, ErrorMessage = "Quantity must be a non-negative number")]
-        public int InventoryQuantity { get; set; }
+        public int StockQuantity { get; set; }
 
         [Required(ErrorMessage = "Category ID is required")]
         public int CategoryId { get; set; }

@@ -14,7 +14,13 @@ namespace TechStore.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddControllers();
+            // Configurar el comportamiento del serializador JSON para manejar ciclos de referencia
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                    options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+                });
             services.AddCors();
 
             // Registrar los repositorios genéricos
@@ -24,6 +30,7 @@ namespace TechStore.Extensions
             services.AddScoped<ITokenRepository, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
